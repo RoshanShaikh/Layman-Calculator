@@ -1,0 +1,284 @@
+while not eof do
+    state := 1;
+    while not eof do
+        input(ch);
+        case state of
+            1: case ch of
+                '#': state := 2;
+                'A': state := 10;
+                'D': state := 24;
+                'M': state := 33;
+                'R': state := 38;
+                'S': state := 44;
+                letter: state := 47;
+                digit: state := 52;
+                '*': state := 56;
+                '.'|'?':state := 60;
+                ' '|'\n'|'\t': state:=63;
+                else: exit while;
+            end case
+            2: case ch of
+                'S': state := 3;
+                'E': state := 8;
+                else: exit while;
+            end case
+            3: case ch of
+                'T': state := 4;
+                else: exit while;
+            end case
+            4: case ch of
+                'A': state := 5;
+                else: exit while;
+            end case
+            5: case ch of
+                'R': state := 6;
+                else: exit while;
+            end case
+            6: case ch of
+                'T': state := 7;
+                else: exit while;
+            end case
+            7: case ch of
+                other: unput(ch);
+                print(Keyword := START);
+            end case
+            8: case ch of
+                'N': state := 9;
+                else: exit while;
+            end case
+            9: case ch of
+                'D': state := 10;
+                else: exit while;
+            end case
+            10: case ch of
+                other: unput(ch);
+                print(Keyword := END);
+            end case
+            11: case ch of
+                'D': state := 12;
+                'N': state := 14;
+                'S': state := 19;
+                else: exit while;
+            end case
+            12: case ch of
+                'D': state := 13;
+                else: exit while;
+            end case
+            13: case ch of
+                other: unput(ch);
+                print(Opeartion := ADD);
+            end case
+            14: case ch of
+                'S': state := 15;
+                else: exit while;
+            end case
+            15: case ch of
+                'W': state := 16;
+                else: exit while;
+            end case
+                16: case ch of
+                'E': state := 17;
+                else: exit while;
+            end case
+            17: case ch of
+                'R': state := 18;
+            end case
+            18: case ch of
+                other: unput(ch);
+                print(Keyword := ANSWER);
+            end case
+            19: case ch of
+                'S': state := 20;
+                else: exit while;
+            end case
+            20: case ch of
+                'I': state := 21;
+                else: exit while;
+            end case
+            21: case ch of
+                'G': state := 22;
+                else: exit while;
+            end case
+            22: case ch of
+                'N': state := 23;
+                else: exit while;
+            end case
+            23: case ch of
+                other: unput(ch);
+                print(Keyword := ASSIGN);
+            end case
+            24: case ch of
+                'E': state := 25;
+                'I': state := 31;
+                else: exit while;
+            end case
+            25: case ch of
+                'C': state := 26;
+                else: exit while;
+            end case
+            26: case ch of
+                'L': state := 27;
+                else: exit while;
+            end case
+            27: case ch of
+                'A': state := 28;
+                else: exit while;
+            end case
+            28: case ch of
+                'R': state := 29;
+                else: exit while;
+            end case
+            29: case ch of
+                'E': state := 30;
+                else: exit while;
+            end case
+            30: case ch of
+                other: unput(ch);
+                print(Keyword := DECLARE);
+            end case
+            31: case ch of
+                'V': state := 32;
+                else: exit while;
+            end case
+            32: case ch of
+                'E': print(Opeartion := DIV);
+                else: exit while;
+            end case
+            33: case ch of
+                'U':e state := 34;
+                'O': stat := 36;
+                else: exit while;
+            end case
+            34: case ch of
+                'L': state := 35;
+                else: exit while;
+            end case
+            35: case ch of
+                other: unput(ch);
+                print(Opeartion := MUL);
+            end case
+            36: case ch of
+                'D': state := 37;
+                else: exit while;
+            end case
+            37: case ch of
+                other: unput(ch);
+                print(Opeartion := MOD);
+            end case
+            38: case ch of
+                'E': state := 39;
+                else: exit while;
+            end case
+            39: case ch of
+                'S': state := 40;
+                else: exit while;
+            end case
+            40: case ch of
+                'U': state := 41;
+                else: exit while;
+            end case
+            41: case ch of
+                'L': state := 42;
+                else: exit while;
+            end case
+            42: case ch of
+                'T': state := 43;
+                else: exit while;
+            end case
+            43: case ch of
+                other: unput(ch);
+                print(Keyword := RESULT);
+            end case
+            44: case ch of
+                'U': state := 45;
+                else: exit while;
+            end case
+            45: case ch of
+                'B': state := 46;
+                else: exit while;
+            end case
+            46: case ch of
+                other: unput(ch);
+                print(Opeartion := SUB);
+            end case
+            47: case ch of
+                digit: state := 48;
+                letter: state := 50;
+                else: exit while;
+            end case
+            48: case ch of
+                other: unput(ch);
+                state := 49;
+            end case
+            49: case ch of
+                other: unput(ch);
+                print(Id := gettoken());
+            end case
+            50: case ch of
+                letter: state := 50;
+                other: unput(ch);
+                state := 51;
+            end case
+            51: case ch of
+                other: unput(ch);
+                print(Word := gettoken());
+            end case
+                52: case ch of
+                digit: state := 52;
+                '.': state := 53;
+                other: unput(ch);
+                state := 55;
+            end case
+            53: case ch of
+                digit: state := 54;
+                else: exit while;
+            end case
+            54: case ch of
+                digit: state := 54;
+                other: unput(ch);
+                state := 55;
+            end case
+            55: case ch of
+                other: unput(ch);
+                print(Number := gettoken());
+            end case
+            56: case ch of
+                '*': state := 57;
+                else: exit while;
+            end case
+            57: case ch of
+                [^\n]: state := 57;
+                '\n': state := 58;
+                else: exit while;
+            end case
+            58: case ch of
+                other: unput(ch);
+                state := 59;
+            end case
+            59: case ch of
+                other: unput(ch);
+                print(Comment := gettoken());
+            end case
+            60: case ch of
+                ' '|'\t':state := 60;
+                '\n': state := 61;
+                else: exit while;
+            end case
+            61: case ch of
+                other: unput(ch);
+                state := 62;
+            end case
+            62: case ch of
+                other: unput(ch);
+                print(End Of Line := EOL);
+            end case
+            63: cash ch of
+                ' '|'\n'|'\t': state:=63;
+                else: exit while;
+            end case
+        end case
+    end while
+    if(state not belong to {7,10,13,18,23,30,32,35,37,43,46,49,55,57,60}) then
+        print(error : ch)
+    end if
+end while
