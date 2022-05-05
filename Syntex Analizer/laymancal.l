@@ -14,7 +14,7 @@ id	        {letter}{digit}
 operation	ADD|SUB|MUL|DIV
 word	    {letter}+
 number	    {digit}+(\.{digit}+)?
-eol	[\.?]?  {whitespace}?[\n]+
+eol	[\.?]?{whitespace}?[\n]+
 comment	    "**"[^\n]*
 
 %%

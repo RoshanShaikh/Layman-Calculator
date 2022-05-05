@@ -808,88 +808,74 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 22 "laymancal.l"
-{
-if(!strcmp(yytext, "#START")){ return START;
-}else if(!strcmp(yytext, "#END")){
- 
-return END;
-}else if(!strcmp(yytext, "DECLARE")){ return DECLARE;
-}else if(!strcmp(yytext, "ASSIGN")){ return ASSIGN;
-}else if(!strcmp(yytext, "ANSWER")){ return ANSWER;
-}else if(!strcmp(yytext, "RESULT")){ return RESULT;
-}
-}
+{if(!strcmp(yytext, "#START")){ return START;}
+            else if(!strcmp(yytext, "#END")){return END;
+            }else if(!strcmp(yytext, "DECLARE")){ return DECLARE;
+            }else if(!strcmp(yytext, "ASSIGN")){ return ASSIGN;
+            }else if(!strcmp(yytext, "ANSWER")){ return ANSWER;
+            }else if(!strcmp(yytext, "RESULT")){ return RESULT;
+            }
+            }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 34 "laymancal.l"
-{
-if(!strcmp(yytext, "ADD")){ return ADD;
-}else if(!strcmp(yytext, "SUB")){ return SUB;
-}else if(!strcmp(yytext, "MUL")){ return MUL;
-}else if(!strcmp(yytext, "DIV")){ return DIV;
-}
-}
+#line 31 "laymancal.l"
+{if(!strcmp(yytext, "ADD")){ return ADD;
+            }else if(!strcmp(yytext, "SUB")){ return SUB;
+            }else if(!strcmp(yytext, "MUL")){ return MUL;
+            }else if(!strcmp(yytext, "DIV")){ return DIV;
+            }
+            }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 42 "laymancal.l"
-{
-strcpy(yylval.id, yytext); 
-return ID;
-}
+#line 38 "laymancal.l"
+{strcpy(yylval.id, yytext); return ID;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 46 "laymancal.l"
-{
-strcpy(yylval.word, yytext); 
-return WORD;
-}
+#line 39 "laymancal.l"
+{strcpy(yylval.word, yytext); return WORD;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 51 "laymancal.l"
-{
-yylval.number=atof(yytext); 
-return NUMBER;
-}
+#line 40 "laymancal.l"
+{yylval.number=atof(yytext); return NUMBER;}
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 56 "laymancal.l"
-{
-    if(yytext[0]=='.'){return DOT;
-    }else if(yytext[0]=='?'){return QMARK;
-    } 
+#line 42 "laymancal.l"
+{if(yytext[0]=='.'){return DOT;
+            }else if(yytext[0]=='?'){return QMARK;
+            } 
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 62 "laymancal.l"
+#line 47 "laymancal.l"
 { }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 64 "laymancal.l"
+#line 48 "laymancal.l"
 { }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 65 "laymancal.l"
+#line 49 "laymancal.l"
 {
-    char msg[256];
-    sprintf(msg, "Lexical Error : <Invalid symbol :\'%c\'>", yytext[0]);
-    yyerror(msg);
-}
+                char msg[256];
+                sprintf(msg, "Lexical Error : <Invalid symbol :\'%c\'>", yytext[0]);
+                yyerror(msg);
+            }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 70 "laymancal.l"
+#line 54 "laymancal.l"
 ECHO;
 	YY_BREAK
-#line 893 "lex.yy.c"
+#line 879 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1906,7 +1892,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 70 "laymancal.l"
+#line 54 "laymancal.l"
 
 
 int yywrap(void){
